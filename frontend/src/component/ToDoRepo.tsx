@@ -19,7 +19,7 @@ export default function ToDoRepo(props: ToDoRepositoryProps){
 
 
     return(
-        <div className={"List"}>
+        <div>
 {/*            <table>
                 <tr>
                     <th>Aufgabe</th>

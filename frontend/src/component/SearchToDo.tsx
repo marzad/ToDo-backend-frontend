@@ -5,7 +5,7 @@ import ToDoComponent from "./ToDoComponent";
 
 type SearchToDoRepositoryProps = {
     toDoList: ToDoEntity[]
-    searchToDo(id: number[]): void
+    searchToDo(description: string): void
 }
 
 export default function SearchToDo(props: SearchToDoRepositoryProps){
@@ -49,7 +49,7 @@ export default function SearchToDo(props: SearchToDoRepositoryProps){
         <div>
             <div>
                 <input onChange ={inputTask}/>
-                <button onClick={onClickFunction}>Suchen</button>
+                <button onClick={onClickFunction}>Search</button>
             </div>
         </div>
 

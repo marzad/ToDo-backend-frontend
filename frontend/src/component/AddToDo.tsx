@@ -4,7 +4,7 @@ import ToDoRepo from "./ToDoRepo";
 
 type AddToDoRepositoryProps = {
     toDoList: ToDoEntity[]
-    addToDo(entity: ToDoEntity): void
+    addToDo(description: string): void
 }
 
 export default function AddToDo(props: AddToDoRepositoryProps){
@@ -25,6 +25,7 @@ export default function AddToDo(props: AddToDoRepositoryProps){
     function comulateIndex(){
         let i = props.toDoList.length-1
         let lastIndex = props.toDoList.at(i)
+        // @ts-ignore
         return lastIndex.id+1
     }
 
@@ -41,7 +42,7 @@ export default function AddToDo(props: AddToDoRepositoryProps){
         <>
             <div>
                 <input onChange={inputTask}/>
-                <button onClick={onClickFunction}/>
+                <button onClick={onClickFunction}>Add</button>
             </div>
         </>
 

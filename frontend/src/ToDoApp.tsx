@@ -21,6 +21,31 @@ export default function ToDoApp(){
     }
 
 
+    function addTask(){
+        axios.put("/api/todo", toAddTask).then((response) => {
+            setTasks(response.data)
+        })
+    }
+
+    function searchTask(){
+        axios.get("/api/todo/{task}", {params: toSearchTask}).then((response) => {
+            setTasks(response.data)
+        })
+
+    }
+
+    const [toAddTask, setToAddTask] = useState("")
+
+    function addAgentFunction(description: string){
+        setToAddTask(description)
+    }
+
+    const [toSearchTask, setToSearchTask] = useState("")
+
+    function searchAgentFunction(task: string){
+        setToSearchTask(task)
+    }
+
 
     return(
         <>
@@ -28,10 +53,10 @@ export default function ToDoApp(){
                 <ToDoRepo toDoList={tasks}/>
             </div>
             <div>
-                <AddToDo toDoList={tasks} addToDo={}/>
+                <AddToDo toDoList={tasks} addToDo={addAgentFunction}/>
             </div>
             <div>
-                <SearchToDo toDoList={tasks} searchToDo={}/>
+                <SearchToDo toDoList={tasks} searchToDo={searchAgentFunction}/>
             </div>
         </>
 
