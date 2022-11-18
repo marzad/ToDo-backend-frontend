@@ -1,5 +1,6 @@
-import React, {useState} from "react";
+import React, {ChangeEvent, useState} from "react";
 import {ToDoEntity} from "../model/ToDo"
+import ToDoRepo from "./ToDoRepo";
 
 type AddToDoRepositoryProps = {
     toDoList: ToDoEntity[]
@@ -15,16 +16,33 @@ export default function AddToDo(props: AddToDoRepositoryProps){
         setToDoList(props.toDoList)
     }
 
+    const [toAddTaskDescription, setToAddTaskDescription] = useState("")
 
+    function inputTask(event: ChangeEvent<HTMLInputElement>){
+        setToAddTaskDescription(event.target.value)
+    }
+
+    function comulateIndex(){
+        let i = props.toDoList.length-1
+        let lastIndex = props.toDoList.at(i)
+        return lastIndex.id+1
+    }
+
+    function onClickFunction(){
+        addFunction({
+            id : comulateIndex(),
+            description : toAddTaskDescription,
+        status : "OPEN"})
+        return <ToDoRepo toDoList={toDoList}/>
+    }
 
 
     return(
         <>
             <div>
-                <input onChange={}/>
-                <button onClick={}/>
+                <input onChange={inputTask}/>
+                <button onClick={onClickFunction}/>
             </div>
-
         </>
 
     )
