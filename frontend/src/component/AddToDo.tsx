@@ -16,8 +16,14 @@ export default function AddToDo(props: AddToDoRepositoryProps){
     }
 
 
+
+
     return(
         <>
+            <div>
+                <input onChange={}/>
+                <button onClick={}/>
+            </div>
 
         </>
 
